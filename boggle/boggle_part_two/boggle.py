@@ -8,8 +8,8 @@ def make_grid(width, height):
     for a boggle game
     """
     return {(row, col): choice(ascii_uppercase)
-            for row in range(height)
-            for col in range(width)}
+        for row in range(height)
+        for col in range(width)}
 
 
 def neighbours_of_position(coords):
@@ -32,7 +32,7 @@ def neighbours_of_position(coords):
     right = (row, col + 1)
 
     # Bottom-left to bottom-right
-    bottom_left = (row + 1, col - 1)
+    bottom_left = (row + 1, col -1)
     bottom_center = (row + 1, col)
     bottom_right = (row + 1, col + 1)
 
@@ -60,6 +60,10 @@ def path_to_word(grid, path):
     return ''.join([grid[p] for p in path])
 
 
+def word_in_dictionary(word, dict):
+    return word in dict
+
+
 def search(grid, dictionary):
     """
     Search thrugh the paths to locate words by matching
@@ -70,15 +74,15 @@ def search(grid, dictionary):
 
     def do_search(path):
         word = path_to_word(grid, path)
-        if word in dictionary:
+        if word_in_dictionary(word, dictionary):
             paths.append(path)
         for next_pos in neighbours[path[-1]]:
             if next_pos not in path:
                 do_search(path + [next_pos])
-
+    
     for position in grid:
         do_search([position])
-
+    
     words = []
     for path in paths:
         words.append(path_to_word(grid, path))
@@ -98,9 +102,6 @@ def main():
     This is the function that will run the whole project
     """
     grid = make_grid(3, 3)
-    """
-     Here you can change your grid from a 3x3 to a 2x2 to test run times
-     """
     dictionary = get_dictionary('words.txt')
     words = search(grid, dictionary)
     for word in words:

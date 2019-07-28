@@ -14,7 +14,16 @@ I will make the grid larger and make the algorithm more efficient
 
 ## Learning outcome
 
-    - Creating an algorithm
-    - Understanding approprate Data Structures and Collections
-    - Tests before code
+### Part one
+
+    - Creating an algorithm,
+    - Understanding approprate Data Structures and Collections,
+    - Tests before code,
     - Recursion
+
+### Part two
+
+    - Algorithm efficiency, 
+    - Profiling, 
+    - The right data structure, 
+    - Partial words
