@@ -8,8 +8,8 @@ def make_grid(width, height):
     for a boggle game
     """
     return {(row, col): choice(ascii_uppercase)
-        for row in range(height)
-        for col in range(width)}
+            for row in range(height)
+            for col in range(width)}
 
 
 def neighbours_of_position(coords):
@@ -32,7 +32,7 @@ def neighbours_of_position(coords):
     right = (row, col + 1)
 
     # Bottom-left to bottom-right
-    bottom_left = (row + 1, col -1)
+    bottom_left = (row + 1, col - 1)
     bottom_center = (row + 1, col)
     bottom_right = (row + 1, col + 1)
 
@@ -79,10 +79,10 @@ def search(grid, dictionary):
         for next_pos in neighbours[path[-1]]:
             if next_pos not in path:
                 do_search(path + [next_pos])
-    
+
     for position in grid:
         do_search([position])
-    
+
     words = []
     for path in paths:
         words.append(path_to_word(grid, path))
@@ -94,7 +94,7 @@ def get_dictionary(dictionary_file):
     Load dictionary file
     """
     with open(dictionary_file) as f:
-        return [w.strip().upper() for w in f]
+        return {w.strip().upper() for w in f}
 
 
 def main():
